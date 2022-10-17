@@ -24,10 +24,10 @@
                                 {{ $plan->name }}
                             </td>
                             <td>
-                                {{ $plan->price }}
+                              R$ {{ number_format($plan->price, 2, ',', '.') }}
                             </td>
                             <td style="width=10px;">
-                                <a href="" class="btn btn-warning">VER</a>
+                                <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">VER</a>
                             </td>
                         </tr>
                     @endforeach
