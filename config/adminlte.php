@@ -292,6 +292,10 @@ return [
     'menu' => [
         // Navbar items:
         [
+            'text'  =>'Planos',
+            'url' => 'plans'
+        ]/*,
+        [
             'type'         => 'navbar-search',
             'text'         => 'search',
             'topnav_right' => true,
@@ -382,7 +386,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ],*/
     ],
 
     /*
