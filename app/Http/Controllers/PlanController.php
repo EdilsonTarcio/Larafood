@@ -6,7 +6,7 @@ use App\Models\Plan;
 use Illuminate\Http\Request;
 
 
-class PlanContoller extends Controller
+class PlanController extends Controller
 {
     private $repository;
     public function __construct(Plan $plan)
@@ -54,4 +54,15 @@ class PlanContoller extends Controller
 
         return redirect()->route('plans.index');
     }
-}
+    public function search(Request $request)
+    {
+        //dd($request->all());
+        $filters = $request->all();
+
+        $plans  = $this->repository->search($request->filter);
+        return view('admin.pages.plans.index', [
+            'plans' => $plans,
+            'filter' => $filters,
+        ]);
+    }
+}   

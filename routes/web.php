@@ -1,14 +1,16 @@
 <?php
 
 use App\Http\Controllers\{
-    PlanContoller
+    PlanController
 };
 use Illuminate\Support\Facades\Route;
-Route::delete('/plans/{url}', [PlanContoller::class, 'destroy'])->name('plans.destroy');
-Route::get('/plans/{url}', [PlanContoller::class, 'show'])->name('plans.show');
-Route::post('/plans', [PlanContoller::class, 'store'])->name('plans.store');
-Route::get('/plans/create', [PlanContoller::class, 'create'])->name('plans.create');
-Route::get('/plans', [PlanContoller::class, 'index'])->name('plans.index');
+
+Route::any('/plans/search', [PlanController::class, 'search'])->name('plans.search');
+Route::delete('/plans/{url}', [PlanController::class, 'destroy'])->name('plans.destroy');
+Route::get('/plans/{url}', [PlanController::class, 'show'])->name('plans.show');
+Route::post('/plans', [PlanController::class, 'store'])->name('plans.store');
+Route::get('/plans/create', [PlanController::class, 'create'])->name('plans.create');
+Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');
 Route::get('/teste', function () {
     return view('welcome');
 });
