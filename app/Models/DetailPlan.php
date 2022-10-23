@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetailPlan extends Model
 {
-    use HasFactory;
+    //use HasFactory;
+    public function plan()
+    {
+        $this->belongsTo(Plan::class);
+    } //Relacionamento um para um 
 }
