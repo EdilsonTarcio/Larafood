@@ -11,6 +11,11 @@ class Plan extends Model
     //use HasFactory;
     protected $fillable = ['name', 'url', 'price', 'description'];
 
+    public function details()
+    {
+        return $this->hasMany(DetailPlan::class);
+    }
+
     public function search($filter = null)
     { // esse metodo busca por planos que tenha as informações de busca informado pelo filter
         $results = $this->where('name','like', "%{$filter}%")
