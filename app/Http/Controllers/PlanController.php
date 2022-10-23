@@ -14,16 +14,16 @@ class PlanController extends Controller
         $this->repository = $plan;
         //objeto do model, é utilizado para salvar e buscar registro no banco de dados
     }
+    public function new ()
+    {
+        return view('admin.pages.plans.new');
+    }
     public function index ()
     {
         $plans = $this->repository->all(); 
         return view('admin.pages.plans.index', [
             'plans' => $plans,
         ]);
-    }
-    public function create ()
-    {
-        return view('admin.pages.plans.create');
     }
     public function store (Request $request)
     {
@@ -65,4 +65,9 @@ class PlanController extends Controller
             'filter' => $filters,
         ]);
     }
+    public function testev ()
+    {
+        return view('admin.pages.plans.teste');
+    }
+
 }   
