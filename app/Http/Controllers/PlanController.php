@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreUpdatePlan;
 use Illuminate\Support\Str;
 use App\Models\Plan;
 use Illuminate\Http\Request;
@@ -25,7 +27,7 @@ class PlanController extends Controller
             'plans' => $plans,
         ]);
     }
-    public function store (Request $request)
+    public function store (StoreUpdatePlan $request)
     {
         //dd($request->all());                      
         $data = $request->all();                    //atribui as informações que vem do formulário para a variavel dado
@@ -80,7 +82,7 @@ class PlanController extends Controller
             'plan' =>$plan
         ]);
     }
-    public function update(Request $request, $url)
+    public function update(StoreUpdatePlan $request, $url)
     {
         $plan = $this->repository->where('url', $url)->first(); //faz a consulta a url passada dentro do banco
         if(!$plan)                                              //se não localizado
