@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdatePlan;
-use Illuminate\Support\Str;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 
@@ -30,11 +29,10 @@ class PlanController extends Controller
     public function store (StoreUpdatePlan $request)
     {
         //dd($request->all());                      
-        $data = $request->all();                    //atribui as informações que vem do formulário para a variavel dado
-        $data['url'] = Str::kebab($request->name);  //para criar a url que é uma composição do nome com "-" no lugar de espaço utiliza essa função
-        $this->repository->create($data);           
+        $this->repository->create($request->all());           
         /* realiza o cadasatro de um novo plano, chamando o metodo create e passando as informações, será salvo no banco as colunas da tabela
-        informadas no $fillable dentro do Model Plan, o atributo nome dos inputs devem ter os mesmos nomes das colunas no banco */
+        informadas no $fillable dentro do Model Plan, o atributo nome dos inputs devem ter os mesmos nomes das colunas no banco 
+        a coluna 'url' será preenchida pelo Observer pois tratase de uma composição*/
 
         return redirect()->route('plans.index');
     }
