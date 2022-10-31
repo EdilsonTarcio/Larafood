@@ -13,7 +13,7 @@
            <form action="{{ route('plans.search') }}" method="POST" class="form-inline">
             @csrf
             <input type="text" name="filter" placeholder="Filter" class="form-control" value="{{ $filters['filter'] ?? '' }}">
-            <button type="submit" class="btn btn-dark"><i class="fas fa-search fa-fw"></i></button>
+            <button type="submit" class="btn btn-dark"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
            </form>
         </div>
         <div class="card-body">
@@ -44,4 +44,7 @@
             </table>
         </div>
     </div>
+@stop
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @stop

@@ -14,7 +14,7 @@ class Plan extends Model
     public function details()
     {
         return $this->hasMany(DetailPlan::class);
-    }
+    } //Adicionando relacionamento "hasMany" um para muitos, onde um plano pode conter varios detalhes
 
     public function search($filter = null)
     { // esse metodo busca por planos que tenha as informações de busca informado pelo filter

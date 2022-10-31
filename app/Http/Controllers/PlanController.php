@@ -67,7 +67,7 @@ class PlanController extends Controller
             'filter' => $filters,                              //passa o dado da request para a view 
         ]);
     }
-    public function testev ()
+    public function teste ()
     {
         return view('admin.pages.plans.teste');
     }

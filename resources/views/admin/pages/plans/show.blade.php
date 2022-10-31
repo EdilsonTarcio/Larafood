@@ -23,8 +23,11 @@
           <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger">Deletar o plano</button>
+            <button type="submit"  class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Deletar o plano</button>
           </form>
         </div>
     </div>
+@stop
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @stop
