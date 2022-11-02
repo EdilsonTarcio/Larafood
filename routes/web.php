@@ -15,7 +15,9 @@ Route::prefix('plans')->group(function (){
     /** 
      * Routes details Plans
     */
-    Route::get('/{url}/details', [DetailPlanController::class, 'index'])->name('details.imdex');
+    Route::post('/{url}/details', [DetailPlanController::class, 'store'])->name('details.store');
+    Route::get('/{url}/details,create', [DetailPlanController::class, 'create'])->name('details.create');
+    Route::get('/{url}/details', [DetailPlanController::class, 'index'])->name('details.index');
     /**
      * Plans Routes
      */
