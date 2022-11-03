@@ -54,7 +54,9 @@ class PlanController extends Controller
             return redirect()->back();                          //volta para a origem da requisição
         $plan->delete();                                        //se localizar deleta o plano
 
-        return redirect()->route('plans.index');                //volta para o index
+        return redirect()
+                        ->route('plans.index')                //volta para o index
+                        ->with('deletado', 'Plano deletado com sucesso!');
     }
     public function search(Request $request)
     {

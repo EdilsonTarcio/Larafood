@@ -17,6 +17,7 @@
            </form>
         </div>
         <div class="card-body">
+            @include('admin.includes.alerts')
             <table class="table table-condensed">
                 <thead>
                     <tr>
@@ -48,4 +49,8 @@
 @stop
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="sweetalert2.min.css">
+@stop
+@section('js')
+    <script src="sweetalert2.min.js"></script>
 @stop
