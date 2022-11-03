@@ -49,9 +49,19 @@ class PlanController extends Controller
     }
     public function destroy ($url)
     {
-        $plan = $this->repository->where('url', $url)->first(); //faz a consulta a url passada dentro do banco
+        $plan = $this->repository
+                                ->with('details')
+                                ->where('url', $url)
+                                ->first(); //faz a consulta a url passada dentro do banco
+        
         if(!$plan)                                              //se não localizado
             return redirect()->back();                          //volta para a origem da requisição
+        //dd($plan->details->count()); //debug mostra quantos relacionamentos existem para o plano
+        if($plan->details->count() > 0){
+            return redirect()
+                            ->back()
+                            ->with('error', 'Existem detalhes cadastrados para esse plano com isso não pode ser deletado');
+        }
         $plan->delete();                                        //se localizar deleta o plano
 
         return redirect()

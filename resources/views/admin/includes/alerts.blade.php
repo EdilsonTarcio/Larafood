@@ -10,3 +10,8 @@
         {{ session('deletado') }}
     </div>
 @endif
+@if (session('error'))
+    <div class="alert alert-warning">
+        {{ session('error') }}
+    </div>
+@endif

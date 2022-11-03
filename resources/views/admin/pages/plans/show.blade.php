@@ -5,6 +5,7 @@
 @stop
 @section('content')
     <div class="card">
+      @include('admin.includes.alerts')
         <div class="card-body">
           <ul>
             <li>
