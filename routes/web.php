@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\{
     PlanController,
-    DetailPlanController
+    DetailPlanController,
+    ProfileController,
 };
 use Illuminate\Support\Facades\Route;
 Route::prefix('plans')->group(function (){
-    
+    /**
+     * Routes para Profiles
+     */
+    Route::resource('profiles', ProfileController::class);
     /**
      * Route para teste de View e elementos
      */

@@ -293,9 +293,14 @@ return [
         // Navbar items:
         [
             'text'  =>'Planos',
-            'url' => 'plans',
-            'icon' => 'nav-icon fas fa-th'
-        ]/*,
+            'url'   => 'plans',
+            'icon'  => 'nav-icon fas fa-th'
+        ],
+        [
+            'text'  =>'Perfis',
+            'url'   => 'plans/profiles',
+            'icon'  => 'fa-solid fa-user'
+        ],/*,
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
