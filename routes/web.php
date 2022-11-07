@@ -6,6 +6,7 @@ use App\Http\Controllers\{
     ProfileController,
 };
 use Illuminate\Support\Facades\Route;
+
 Route::prefix('plans')->group(function (){
     /**
      * Routes para Profiles
