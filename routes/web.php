@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\{
+    CidadeController,
     PlanController,
     DetailPlanController,
     ProfileController,
@@ -42,3 +43,5 @@ Route::prefix('plans')->group(function (){
  * Route Breadcrumb 
  */
 Route::get('admin', [PlanController::class, 'index'])->name('admin.index');
+
+Route::get('cidades', [CidadeController::class, 'index'])->name('cidade.index');
