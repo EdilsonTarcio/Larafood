@@ -12,6 +12,7 @@ Route::prefix('plans')->group(function (){
     /**
      * Routes para Profiles
      */
+    Route::any('profiles/search', [ProfileController::class, 'search'])->name('profiles.search');
     Route::resource('profiles', ProfileController::class);
     /**
      * Route para teste de View e elementos
