@@ -1,13 +1,14 @@
 @extends('adminlte::page')
-@section('title', 'Cadastrar Novo Perfil')
+@section('title', "Editar Permissão {$permission->name}")
 @section('content_header')
-    <h1>Castro de Perfis</h1>
+    <h1>Editar a Permissão <b>{{ $permission->name }}</b></h1>
 @stop
 @section('content')
     <div class="card">
       <div class="card-body">
-          <form action="{{ route('profiles.store') }}" class="form" method="POST">
-            @include('admin.pages.profiles._partials.form') {{-- chama o formulario compartilhado entre edit e new --}}
+          <form action="{{ route('permission.update', $permission->id) }}" class="form" method="POST">
+            @method('PUT')
+            @include('admin.pages.permissions._partials.form') {{-- chama o formulario compartilhado entre edit e new --}}
           </form>
       </div>
     </div>

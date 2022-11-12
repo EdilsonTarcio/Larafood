@@ -300,6 +300,11 @@ return [
             'text'  =>'Perfis',
             'url'   => 'plans/profiles',
             'icon'  => 'fa-solid fa-user'
+        ],
+        [
+            'text'  =>'Permissões',
+            'url'   => 'plans/permission',
+            'icon'  => 'fa-solid fa-lock'
         ],/*,
         [
             'type'         => 'navbar-search',

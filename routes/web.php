@@ -4,11 +4,17 @@ use App\Http\Controllers\{
     CidadeController,
     PlanController,
     DetailPlanController,
+    PermissionController,
     ProfileController,
 };
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('plans')->group(function (){
+    /**
+     * Routes para Permission
+     */
+    Route::any('permission/search', [PermissionController::class, 'search'])->name('permission.search');
+    Route::resource('permission', PermissionController::class);
     /**
      * Routes para Profiles
      */

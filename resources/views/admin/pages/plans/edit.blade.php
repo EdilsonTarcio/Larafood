@@ -14,3 +14,10 @@
       </div>
     </div>
 @stop
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="sweetalert2.min.css">
+@stop
+@section('js')
+    <script src="sweetalert2.min.js"></script>
+@stop
