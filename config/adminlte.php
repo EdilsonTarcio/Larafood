@@ -294,7 +294,7 @@ return [
         [
             'text'  =>'Planos',
             'url'   => 'plans',
-            'icon'  => 'nav-icon fas fa-th'
+            'icon'  => 'fa-solid fa-rectangle-list'
         ],
         [
             'text'  =>'Perfis',

@@ -6,10 +6,16 @@ use App\Http\Controllers\{
     DetailPlanController,
     PermissionController,
     ProfileController,
+    PermissionProfileController,
 };
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('plans')->group(function (){
+    /** 
+     * Permission x Profile
+    */
+    Route::get('profiles/{id}/permissions', [PermissionProfileController::class, 'permissions'])->name('profiles.permission');
+
     /**
      * Routes para Permission
      */
