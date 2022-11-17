@@ -6,8 +6,7 @@
         <li class="breadcrumb-item active"><a href="{{ route('profiles.index') }}">Perfis</a></li>
         <li class="breadcrumb-item active"><a href="{{ route('profiles.permission', $profile->id) }}">Permissões</a></li>
     </ol>
-    <h1>Permissões do perfil - <strong>{{ $profile->name }}</strong>
-        <a href="{{ route('profiles.permission.available', $profile->id) }}" class="btn btn-dark">ADD Nova Permissão</a>
+    <h1>Permissões disponiveis para o perfil - <strong>{{ $profile->name }}</strong>
     </h1>
 @stop
 @section('content')
@@ -25,21 +24,29 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
+                        <th width="50px">#</th>
                         <th>Nome</th>
-                        <th width="250">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($permissions as $permission)
+                    <form action="{{ route('profiles.permission.attach', $profile->id) }}" method="POST">
+                        @csrf
+                        @foreach ($permissions as $permission)
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="permissions[]" value="{{ $permission->id }}">
+                                </td>
+                                <td>
+                                    {{ $permission->name }}
+                                </td>
+                            </tr>
+                        @endforeach
                         <tr>
-                            <td>
-                                {{ $permission->name }}
-                            </td>
-                            <td style="width=10px;">
-                                <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-warning">Ver</a>
+                            <td colspan="500">
+                                <button type="submit" class="btn btn-primary">vincular</button>
                             </td>
                         </tr>
-                    @endforeach
+                    </form>
                 </tbody>
             </table>
         </div>
