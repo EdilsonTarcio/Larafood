@@ -27,16 +27,18 @@ class PermissionProfileController extends Controller
         return view('admin.pages.profiles.permissions.permissions', compact('profile', 'permissions'));
 
     }
-    public function available($idProfile)
+    public function available(Request $request, $idProfile)
     {
         
         if (!$profile = $this->profile->find($idProfile)){
             return redirect()->back();
         }
-
-        $permissions = $profile->permissionAvailable();
         
-        return view('admin.pages.profiles.permissions.available', compact('profile', 'permissions'));
+        //dd($request->filter);
+        $filters = $request->except('_token'); 
+    
+        $permissions = $profile->permissionAvailable($request->filter); //envia o filtro para o Model realizar a consulta sql
+        return view('admin.pages.profiles.permissions.available', compact('profile', 'permissions', 'filters'));//passa os filtros para a paguina
 
     }
     public function attachPermissionsProfile(Request $request, $idProfile)

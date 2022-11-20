@@ -21,7 +21,7 @@ class Profile extends Model
      * Lista as permissões que não estão associadas ao perfil atual!
      */
 
-     public function permissionAvailable()
+     public function permissionAvailable($filter = null)
      { 
         $permissions = Permission::whereNotIn('id', function($query){  
             $query->select('permission_profile.permission_id');
@@ -29,7 +29,12 @@ class Profile extends Model
             $query->whereRaw("permission_profile.profile_id={$this->id}");
         //})->toSql();
         //dd($permissions);
-           })->paginate();
+           })
+           ->where(function ($queryFilter) use ($filter){
+            if($filter)
+                $queryFilter->where('permissions.name', 'LIKE', "%{$filter}%"); //executa a quary se o filter for diferente de null
+           })
+           ->paginate();
         return $permissions;
      }
 }

@@ -12,11 +12,10 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <form action="{{ route('profiles.search') }}" method="POST" class="form-inline">
+            <form action="{{ route('profiles.permission.available', $profile->id) }}" method="POST" class="form-inline">
                 @csrf
-                <input type="text" name="filter" placeholder="Filtro" class="form-control"
-                    value="{{ $filters['filter'] ?? '' }}">
-                <button type="submit" class="btn btn-dark"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                <input type="text" name="filter" placeholder="Filtro" class="form-control" value="{{ $filters['filter'] ?? '' }}">
+                <button type="submit" class="btn btn-dark"><i class="fa-solid fa-magnifying-glass-plus"></i>Filtrar</button>
             </form>
         </div>
         <div class="card-body">
