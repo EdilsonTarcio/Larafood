@@ -14,6 +14,7 @@ Route::prefix('plans')->group(function (){
     /** 
      * Permission x Profile
     */
+    Route::get('profiles/{id}/permission/{idPermission}/detach', [PermissionProfileController::class, 'detachPermissionProfile'])->name('profile.permission.detach');
     Route::post('profiles/{id}/permissions', [PermissionProfileController::class, 'attachPermissionsProfile'])->name('profiles.permission.attach');
     Route::any('profiles/{id}/permissions/available', [PermissionProfileController::class, 'available'])->name('profiles.permission.available');
     Route::get('profiles/{id}/permissions', [PermissionProfileController::class, 'permissions'])->name('profiles.permission');

@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Permissões do perfil {$profile->name}')
+@section('title', "Permissões do perfil {$profile->name}")
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
@@ -12,21 +12,13 @@
 @stop
 @section('content')
     <div class="card">
-        <div class="card-header">
-            <form action="{{ route('profiles.search') }}" method="POST" class="form-inline">
-                @csrf
-                <input type="text" name="filter" placeholder="Filtro" class="form-control"
-                    value="{{ $filters['filter'] ?? '' }}">
-                <button type="submit" class="btn btn-dark"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            </form>
-        </div>
         <div class="card-body">
             @include('admin.includes.alerts')
             <table class="table table-condensed">
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th width="250">Ações</th>
+                        <th width="50">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +28,7 @@
                                 {{ $permission->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-warning">Ver</a>
+                                <a href="{{ route('profile.permission.detach', [$profile->id, $permission->id]) }}" class="btn btn-danger">Desvincular</a>
                             </td>
                         </tr>
                     @endforeach

@@ -16,7 +16,7 @@ class PermissionProfileController extends Controller
         $this->permission = $permission;
     }
     
-    public function permissions($idProfile)
+    public function permissions($idProfile) // todas as Permissões
     {
         $profile = $this->profile->find($idProfile);
         if (!$profile){
@@ -27,13 +27,12 @@ class PermissionProfileController extends Controller
         return view('admin.pages.profiles.permissions.permissions', compact('profile', 'permissions'));
 
     }
-    public function available(Request $request, $idProfile)
+    public function available(Request $request, $idProfile) // Filtro search e permissões disponiveis para o perfil
     {
         
         if (!$profile = $this->profile->find($idProfile)){
             return redirect()->back();
         }
-        
         //dd($request->filter);
         $filters = $request->except('_token'); 
     
@@ -41,9 +40,9 @@ class PermissionProfileController extends Controller
         return view('admin.pages.profiles.permissions.available', compact('profile', 'permissions', 'filters'));//passa os filtros para a paguina
 
     }
-    public function attachPermissionsProfile(Request $request, $idProfile)
+    public function attachPermissionsProfile(Request $request, $idProfile) //Vincula permissão ao perfil
     {
-        if (!$profile = $this->profile->find($idProfile)){
+        if (!$profile = $this->profile->find($idProfile)){ // recupera o perfil pelo id
             return redirect()->back();
         }
 
@@ -55,7 +54,19 @@ class PermissionProfileController extends Controller
 
         //dd($request->permissions);
         $profile->permissions()->attach($request->permissions);
-
         return redirect()->route('profiles.permission', $profile->id);
+    }
+    public function detachPermissionProfile($idProfile, $idPermission)
+    {
+        $profile = $this->profile->find($idProfile);// Recupera o perfil pelo id
+        $permission = $this->permission->find($idPermission); // Recupera a permissão pelo id
+
+        if (!$profile || !$permission){  //se passar um id inválido para a permissão ou perfil da um redireckt back!
+            return redirect()->back();
+        }
+
+        $profile->permissions()->detach($permission); //metodo detch irá desvincular atravez do relacionamento, poderia passar o id ou objeto
+        return redirect()->route('profiles.permission', $profile->id);
+
     }
 }
