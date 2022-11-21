@@ -34,6 +34,7 @@
                             <td style="width=10px;">
                                 <a href="{{ route('permission.show', $permissio_n->id) }}" class="btn btn-warning">Ver</a>
                                 <a href="{{ route('permission.edit', $permissio_n->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('permission.profiles', $permissio_n->id) }}" class="btn btn-secondary">Profiles</a>
                             </td>
                         </tr>
                     @endforeach
